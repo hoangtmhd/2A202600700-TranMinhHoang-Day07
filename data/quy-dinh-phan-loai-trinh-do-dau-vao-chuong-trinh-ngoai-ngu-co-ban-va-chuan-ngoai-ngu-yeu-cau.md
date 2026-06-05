@@ -50,7 +50,9 @@ BỘ GIÁO DỤC VÀ ĐÀO TẠO **CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM
 
 **Phân loại trình độ đầu vào, chương trình ngoại ngữ cơ bản** 
 
-**và chuẩn ngoại ngữ yêu cầu đối với sinh viên đại học hình thức chính quy** _(Kèm theo Quyết định số                       /QĐ-ĐHBK ngày          tháng         năm 2025 10728 26 9 của Giám đốc Đại học Bách khoa Hà Nội)_ **Điều 1. Phạm vi điều chỉnh và đối tượng áp dụng** 
+**và chuẩn ngoại ngữ yêu cầu đối với sinh viên đại học hình thức chính quy** _(Kèm theo Quyết định số                       /QĐ-ĐHBK ngày          tháng         năm 2025 10728 26 9 của Giám đốc Đại học Bách khoa Hà Nội)_
+
+**Điều 1. Phạm vi điều chỉnh và đối tượng áp dụng** 
 
 1. Quy định này điều chỉnh việc đánh giá và phân loại trình độ ngoại ngữ đầu vào, chương trình ngoại ngữ cơ bản (NNCB), điều kiện miễn học các học phần NNCB, yêu cầu năng lực ngoại ngữ theo từng học kỳ và chuẩn ngoại ngữ đầu ra đối với sinh viên đại học hình thức chính quy; việc xác định bậc năng lực ngoại ngữ tuân theo Khung năng lực ngoại ngữ 6 bậc dùng cho Việt Nam. 
 
@@ -100,7 +102,9 @@ Lộ trình học tập đối với các học phần NNCB được áp dụng 
 
 3. Việc đăng ký học song hành các học phần NNCB tương ứng ở mỗi kỳ kể từ kỳ 3 trở đi (trừ trường hợp đã học hoặc được miễn học phần) là điều kiện bắt buộc để được đăng ký học tập các học phần khác trong CTĐT. 
 
-4. Sinh viên không được phép hủy các học phần NNCB đã đăng ký học song hành, trừ trường hợp xin rút hoặc chủ động rút toàn bộ đăng ký học tập trong học kỳ. **Điều 5. Yêu cầu về chuẩn ngoại ngữ đầu ra** 
+4. Sinh viên không được phép hủy các học phần NNCB đã đăng ký học song hành, trừ trường hợp xin rút hoặc chủ động rút toàn bộ đăng ký học tập trong học kỳ.
+
+**Điều 5. Yêu cầu về chuẩn ngoại ngữ đầu ra** 
 
 1. Yêu cầu về chuẩn ngoại ngữ đầu ra được quy định cụ thể cho từng CTĐT tại các Phụ lục tương ứng kèm theo Quy định này. 
 

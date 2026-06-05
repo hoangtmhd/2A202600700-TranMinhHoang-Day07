@@ -160,6 +160,50 @@ def compute_similarity(vec_a: list[float], vec_b: list[float]) -> float:
     return dot_product / (norm_a * norm_b)
 
 
+class RegulationChunker:
+    """
+    Split Vietnamese regulation documents by Article (Điều), Appendix (Phụ lục), or Table (Bảng) headings.
+    Falls back to RecursiveChunker if no such headings are found.
+    """
+
+    def __init__(self, chunk_size: int = 1500) -> None:
+        self.chunk_size = chunk_size
+
+    def chunk(self, text: str) -> list[str]:
+        if not text.strip():
+            return []
+
+        # Find occurrences of "Điều X", "Phụ lục X", "Bảng X" at paragraph/line start
+        pattern = r'(?:\n|^)(?:\#\#\s+)?(?:\*\*)?(?:Điều\s+\d+|Phụ\s+lục\s+[IVXLCDMivxlcdm\d]+|Bảng\s+\d+(?:\.\d+)?)\b'
+        matches = list(re.finditer(pattern, text))
+
+        if not matches:
+            return RecursiveChunker(chunk_size=self.chunk_size).chunk(text)
+
+        chunks: list[str] = []
+        first_start = matches[0].start()
+        intro = text[:first_start].strip()
+        if intro:
+            if len(intro) > self.chunk_size:
+                chunks.extend(RecursiveChunker(chunk_size=self.chunk_size).chunk(intro))
+            else:
+                chunks.append(intro)
+
+        for i in range(len(matches)):
+            start = matches[i].start()
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+            chunk_text = text[start:end].strip()
+            if not chunk_text:
+                continue
+
+            if len(chunk_text) > self.chunk_size:
+                chunks.extend(RecursiveChunker(chunk_size=self.chunk_size).chunk(chunk_text))
+            else:
+                chunks.append(chunk_text)
+
+        return chunks
+
+
 class ChunkingStrategyComparator:
     """Run all built-in chunking strategies and compare their results."""
 
