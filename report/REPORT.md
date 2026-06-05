@@ -163,7 +163,8 @@ class RegulationChunker:
 |-----------|----------|----------------------|-----------|----------|
 | Trần Minh Hoàng | RegulationChunker | 9.0/10 | Giữ nguyên vẹn cấu trúc và ngữ nghĩa của từng Điều luật, ít phân mảnh | Chunk dài hơn làm giảm độ chính xác tập trung của embedding |
 | Nguyễn Thế Giáp | RecursiveChunker | 9.0/10 | Giữ ngữ cảnh điều/khoản/phụ lục tốt, phù hợp văn bản quy chế hành chính có cấu trúc phân cấp rõ, giúp retrieval ổn định trên các tài liệu dài. | Số chunk nhiều hơn các cách cắt thô nên tốn chi phí index/search hơn và vẫn có thể tạo chunk chưa tối ưu khi gặp bảng quá dài. |
-| [Tên thành viên khác] | | | | |
+| Nguyễn Hữu Thái Minh | HUSTArticleChunker | 9.5/10 | Giảm số lượng chunk tới hơn 60%, bảo toàn trọn vẹn ngữ cảnh của từng Điều/Khoản, giữ nguyên vẹn cấu trúc bảng biểu và chu trình thủ tục. | Kích thước chunk lớn (trung bình ~1500 ký tự) làm loãng embedding ngữ nghĩa nếu query chứa thông tin quá chi tiết. |
+| Nguyễn Đức Tâm | RecursiveChunker | 9.0/10 | Giữ ngữ cảnh điều/khoản/phụ lục tốt, phù hợp văn bản quy chế hành chính có cấu trúc phân cấp rõ, giúp retrieval ổn định trên các tài liệu dài. | Số chunk nhiều hơn các cách cắt thô nên tốn chi phí index/search hơn và vẫn có thể tạo chunk chưa tối ưu khi gặp bảng quá dài. |
 
 **Strategy nào tốt nhất cho domain này? Tại sao?**
 > Chiến lược `RegulationChunker` (chunk theo từng Điều) là tốt nhất cho domain này. Lý do là vì quy chế có tính cấu trúc rất chặt chẽ, việc trích xuất thiếu một Khoản hay một Điểm trong cùng một Điều sẽ dẫn đến việc trả lời sai lệch hoặc thiếu sót nghiêm trọng trong RAG (ví dụ: mất đi điều kiện loại trừ hoặc mức trần/phạt).
@@ -301,7 +302,8 @@ Chạy 5 benchmark queries của nhóm trên implementation cá nhân của bạ
 ## 7. What I Learned (5 điểm — Demo)
 
 **Điều hay nhất tôi học được từ thành viên khác trong nhóm:**
-> Tôi học được từ các thành viên cách gán nhãn metadata phân loại (`scope` và `document_type`) thay vì lưu đường dẫn file thô. Điều này cho phép thực hiện pre-filtering cực kỳ nhanh chóng trước khi tính toán độ tương tự cosine, cải thiện cả tốc độ lẫn độ chính xác.
+> - Tôi học được từ bạn **Nguyễn Hữu Thái Minh** giải pháp tự phát triển một bộ embedding từ khóa siêu nhẹ `HashingTFIDFEmbedder` (TF-IDF L2-normalized) để chạy RAG cực kỳ ổn định trong môi trường offline sandbox khi không có mạng tải các mô hình Transformer lớn. Đồng thời, tôi học được ý tưởng kết hợp Hybrid Search (phối hợp ngữ nghĩa mạng nơ-ron và từ khóa chính xác BM25/TF-IDF) cho các hệ thống cố vấn quy chế học vụ chứa nhiều thuật ngữ đặc thù ("diện 1.2", "khóa 70").
+> - Tôi học được từ bạn **Nguyễn Đức Tâm** và **Nguyễn Thế Giáp** cách tối ưu hóa các tham số cho `RecursiveChunker` để đảm bảo tính ổn định và tính mở rộng của hệ thống khi thực hiện retrieval trên các tài liệu hành chính dài, cũng như tầm quan trọng của việc gán nhãn metadata phân loại (`document_type`, `scope`, `section`) thay vì lưu đường dẫn file thô để pre-filter loại bỏ nhiễu chéo cực kỳ nhanh chóng trước khi tính độ tương đồng.
 
 **Điều hay nhất tôi học được từ nhóm khác (qua demo):**
 > Tôi thấy một nhóm đã kết hợp chiến lược chia nhỏ của họ với việc trích xuất tự động các từ khóa quan trọng (keyword extraction) và thêm vào metadata. Nhờ đó, việc tìm kiếm các từ đồng nghĩa được cải thiện đáng kể ngay cả khi sử dụng mô hình embedding nhỏ.
