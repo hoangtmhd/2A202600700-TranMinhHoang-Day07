@@ -19,12 +19,10 @@ from src.models import Document
 from src.store import EmbeddingStore
 
 SAMPLE_FILES = [
-    "data/python_intro.txt",
-    "data/vector_store_notes.md",
-    "data/rag_system_design.md",
-    "data/customer_support_playbook.txt",
-    "data/chunking_experiment_report.md",
-    "data/vi_retrieval_notes.md",
+    "data/quy-che-dao-tao.md",
+    "data/quy-che-tuyen-sinh-dai-hoc.md",
+    "data/quy-dinh-phan-loai-trinh-do-dau-vao-chuong-trinh-ngoai-ngu-co-ban-va-chuan-ngoai-ngu-yeu-cau.md",
+    "data/quy-dinh-phuong-thuc-xet-tuyen-tai-nang.md",
 ]
 
 
