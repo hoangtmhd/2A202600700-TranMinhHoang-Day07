@@ -163,7 +163,7 @@ class RegulationChunker:
 |-----------|----------|----------------------|-----------|----------|
 | Trần Minh Hoàng | RegulationChunker | 9.0/10 | Giữ nguyên vẹn cấu trúc và ngữ nghĩa của từng Điều luật, ít phân mảnh | Chunk dài hơn làm giảm độ chính xác tập trung của embedding |
 | Nguyễn Thế Giáp | RecursiveChunker | 9.0/10 | Giữ ngữ cảnh điều/khoản/phụ lục tốt, phù hợp văn bản quy chế hành chính có cấu trúc phân cấp rõ, giúp retrieval ổn định trên các tài liệu dài. | Số chunk nhiều hơn các cách cắt thô nên tốn chi phí index/search hơn và vẫn có thể tạo chunk chưa tối ưu khi gặp bảng quá dài. |
-| Nguyễn Hữu Thái Minh | HUSTArticleChunker | 9.5/10 | Giảm số lượng chunk tới hơn 60%, bảo toàn trọn vẹn ngữ cảnh của từng Điều/Khoản, giữ nguyên vẹn cấu trúc bảng biểu và chu trình thủ tục. | Kích thước chunk lớn (trung bình ~1500 ký tự) làm loãng embedding ngữ nghĩa nếu query chứa thông tin quá chi tiết. |
+| Nguyễn Hữu Thái Minh | HUSTArticleChunker | 9.0/10 | Giảm số lượng chunk tới hơn 60%, bảo toàn trọn vẹn ngữ cảnh của từng Điều/Khoản, giữ nguyên vẹn cấu trúc bảng biểu và chu trình thủ tục. | Kích thước chunk lớn (trung bình ~1500 ký tự) làm loãng embedding ngữ nghĩa nếu query chứa thông tin quá chi tiết. |
 | Nguyễn Đức Tâm | RecursiveChunker | 9.0/10 | Giữ ngữ cảnh điều/khoản/phụ lục tốt, phù hợp văn bản quy chế hành chính có cấu trúc phân cấp rõ, giúp retrieval ổn định trên các tài liệu dài. | Số chunk nhiều hơn các cách cắt thô nên tốn chi phí index/search hơn và vẫn có thể tạo chunk chưa tối ưu khi gặp bảng quá dài. |
 
 **Strategy nào tốt nhất cho domain này? Tại sao?**
